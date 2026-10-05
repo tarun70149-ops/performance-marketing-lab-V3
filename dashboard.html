@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lab Dashboard | Performance Marketing Lab</title>
+
+  <meta
+    name="description"
+    content="Performance Marketing Lab dashboard for accessing website testing environments."
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0f19;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(11,15,25,0.96);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #6ee7ff;
+    }
+
+    .back {
+      color: #9da7b9;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: #ffffff;
+    }
+
+    /* PAGE HEADER */
+
+    .page-header {
+      padding: 70px 0 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #6ee7ff;
+      background: rgba(110,231,255,0.08);
+      border: 1px solid rgba(110,231,255,0.2);
+      margin-bottom: 18px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(38px, 6vw, 58px);
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .page-header p {
+      max-width: 700px;
+      color: #9da7b9;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* DASHBOARD GRID */
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      padding-bottom: 70px;
+    }
+
+    .lab-card {
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      transition: 0.2s ease;
+    }
+
+    .lab-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110,231,255,0.25);
+    }
+
+    .icon {
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
+
+    .lab-card h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .lab-card p {
+      color: #929caf;
+      line-height: 1.65;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(110,231,255,0.08);
+      color: #6ee7ff;
+      margin-bottom: 20px;
+    }
+
+    .open-btn {
+      display: inline-block;
+      padding: 11px 17px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .open-btn:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* TRACKING INFO */
+
+    .tracking-box {
+      margin-bottom: 70px;
+      padding: 32px;
+      border-radius: 18px;
+      background: #111827;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .tracking-box h2 {
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .tracking-box p {
+      color: #9da7b9;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .tracking-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tracking-item {
+      padding: 9px 13px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #c5ccda;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 30px 0;
+      color: #737d90;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding-top: 50px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="logo">
+        Performance<span>Lab</span>
+      </a>
+
+      <a href="index.html" class="back">
+        ← Back to Home
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- PAGE HEADER -->
+
+  <main>
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <div class="badge">
+          LAB CONTROL CENTER
+        </div>
+
+        <h1>
+          Performance Marketing Dashboard
+        </h1>
+
+        <p>
+          Choose a testing environment below. Each environment
+          provides a realistic website, user journey and conversion
+          flow that you can use to practice performance marketing.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- LAB ENVIRONMENTS -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="dashboard-grid">
+
+
+          <!-- DENTAL -->
+
+          <div class="lab-card">
+
+            <div class="icon">
+              🦷
+            </div>
+
+            <div class="status">
+              READY
+            </div>
+
+            <h2>
+              Dental Lead Generation
+            </h2>
+
+            <p>
+              Practice lead-generation campaigns using a dental
+              clinic environment. Test landing pages, appointment
+              forms, CTA clicks, thank-you journeys and conversion
+              optimization.
+            </p>
+
+            <a
+              href="themes/dental/index.html"
+              class="open-btn"
+              data-event="dashboard_dental_open"
+            >
+              Launch Dental Lab →
+            </a>
+
+          </div>
+
+
+          <!-- ECOMMERCE -->
+
+          <div class="lab-card">
+
+            <div class="icon">
+              🛒
+            </div>
+
+            <div class="status">
+              READY
+            </div>
+
+            <h2>
+              E-commerce
+            </h2>
+
+            <p>
+              Practice product-view, add-to-cart, cart, checkout
+              and purchase journeys using a complete e-commerce
+              testing environment.
+            </p>
+
+            <a
+              href="themes/ecommerce/index.html"
+              class="open-btn"
+              data-event="dashboard_ecommerce_open"
+            >
+              Launch E-commerce Lab →
+            </a>
+
+          </div>
+
+
+          <!-- BUSINESS -->
+
+          <div class="lab-card">
+
+            <div class="icon">
+              🏢
+            </div>
+
+            <div class="status">
+              COMING SOON
+            </div>
+
+            <h2>
+              Business / Services
+            </h2>
+
+            <p>
+              A future environment for high-ticket services,
+              consultation funnels, lead generation and sales
+              optimization.
+            </p>
+
+            <span class="open-btn">
+              Coming Soon
+            </span>
+
+          </div>
+
+
+          <!-- BLOG -->
+
+          <div class="lab-card">
+
+            <div class="icon">
+              📝
+            </div>
+
+            <div class="status">
+              COMING SOON
+            </div>
+
+            <h2>
+              Blog / Content
+            </h2>
+
+            <p>
+              A future content environment for SEO, engagement,
+              content funnels and audience-building experiments.
+            </p>
+
+            <span class="open-btn">
+              Coming Soon
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- TRACKING SECTION -->
+
+        <div class="tracking-box">
+
+          <h2>
+            🧪 Tracking Is Your Job
+          </h2>
+
+          <p>
+            The Lab does not automatically install advertising or
+            analytics tracking. You build and configure your own
+            measurement system so you can learn how real-world
+            tracking works.
+          </p>
+
+          <div class="tracking-list">
+
+            <span class="tracking-item">
+              Meta Pixel
+            </span>
+
+            <span class="tracking-item">
+              Google Ads
+            </span>
+
+            <span class="tracking-item">
+              Google Tag Manager
+            </span>
+
+            <span class="tracking-item">
+              GA4
+            </span>
+
+            <span class="tracking-item">
+              UTM Tracking
+            </span>
+
+            <span class="tracking-item">
+              DataLayer
+            </span>
+
+            <span class="tracking-item">
+              Event Testing
+            </span>
+
+            <span class="tracking-item">
+              CRO
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+      Performance Marketing Lab © 2026
+    </div>
+
+  </footer>
+
+</body>
+</html>
